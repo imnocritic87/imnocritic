@@ -1,0 +1,14 @@
+{
+  "name": "imnocritic",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.8",
+    "astro": "^6.3.8"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  }
+}
