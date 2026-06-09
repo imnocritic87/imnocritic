@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, getEntry, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const reviews = await getCollection('reviews');
+  return reviews.map((review: any) => {
+    return {
+      params: { review: review.id }
+    }
+  });
+}
+
+const review = await getEntry('reviews', (Astro.params as any).review);
+
+const { Content } = await render(review);
+---
+<BaseLayout>
+  <Content />
+</BaseLayout>

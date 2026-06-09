@@ -1,0 +1,40 @@
+---
+import '@fontsource-variable/inter/wght.css';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="sheet">
+      <nav>
+        <a href="/reviews">Recensioni</a>
+        <a href="/about">A proposito di questo sito</a>
+      </nav>
+      <slot />
+    </div>
+  </body>
+  <style>
+    body {
+      font-family: 'Inter Variable', sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgb(250, 250, 250);
+    }
+
+    .sheet {
+      width: 100%;
+      max-width: 70ch;
+      min-height: 100vh;
+      font-size: 18px;
+      line-height: 1.7;
+      background: white;
+      box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+  </style>
+</html>
