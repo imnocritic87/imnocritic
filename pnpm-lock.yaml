@@ -11,6 +11,9 @@ importers:
       '@fontsource-variable/inter':
         specifier: ^5.2.8
         version: 5.2.8
+      '@fontsource/micro-5':
+        specifier: ^5.2.7
+        version: 5.2.7
       astro:
         specifier: ^6.3.8
         version: 6.3.8(rollup@4.60.4)
@@ -227,6 +230,9 @@ packages:
 
   '@fontsource-variable/inter@5.2.8':
     resolution: {integrity: sha512-kOfP2D+ykbcX/P3IFnokOhVRNoTozo5/JxhAIVYLpea/UBmCQ/YWPBfWIDuBImXX/15KH+eKh4xpEUyS2sQQGQ==}
+
+  '@fontsource/micro-5@5.2.7':
+    resolution: {integrity: sha512-b5xMjAitXWZLwmUjEHRztJJ003vjPMySJ/ZH9ccgKzxbA+gp4Tmn6inY4b1RlRNvCZb3pv8NJjeqpOwQPtyhIw==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -1592,6 +1598,8 @@ snapshots:
     optional: true
 
   '@fontsource-variable/inter@5.2.8': {}
+
+  '@fontsource/micro-5@5.2.7': {}
 
   '@img/colour@1.1.0': {}
 

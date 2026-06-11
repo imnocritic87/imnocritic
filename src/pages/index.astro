@@ -3,18 +3,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 
-const reviews = await getCollection('reviews');
+const posts = await getCollection('posts');
 ---
 <BaseLayout>
-  <div class="reviews">
+  <div class="posts">
     {
-      reviews.map((review: any) => (
-        <a class="review" href={`/reviews/${review.id}`}>
-          <Image src={review.data.hero} alt="A description of my image." />
+      posts.map((post: any) => (
+        <a class="post" href={`/posts/${post.id}`}>
+          <Image src={post.data.hero} alt="A description of my image." />
           <div class="score">80</div>
           <div class="info">
             <div class="type">Recensione</div>
-            <div class="title">{review.data.title}</div>
+            <div class="title">{post.data.title}</div>
             <div class="date">14 Marzo 2026</div>
           </div>
         </a>
@@ -23,18 +23,17 @@ const reviews = await getCollection('reviews');
   </div>
 </BaseLayout>
 <style>
-  .reviews {
+  .posts {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    margin: 1rem;
   }
 
-  .review {
+  .post {
     position: relative;
   }
 
-  .review .info {
+  .post .info {
     position: absolute;
     bottom: 0;
     top: auto;
@@ -43,7 +42,7 @@ const reviews = await getCollection('reviews');
     color: white;
   }
 
-  .review .info .type {
+  .post .info .type {
     display: inline-block;
     text-transform: uppercase;
     margin-top: 1rem;
@@ -55,21 +54,21 @@ const reviews = await getCollection('reviews');
     margin-bottom: 0.5rem;
   }
 
-  .review .info .title {
+  .post .info .title {
     font-weight: 900;
     margin-bottom: 0.5rem;
     margin-left: 1rem;
     font-size: 1.2rem;
   }
 
-  .review .info .date {
+  .post .info .date {
     margin-bottom: 1rem;
     margin-left: 1rem;
     font-size: 0.6rem;
     font-weight: 500;
   }
 
-  .review .score {
+  .post .score {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -85,7 +84,7 @@ const reviews = await getCollection('reviews');
     align-items: center;
   }
 
-  .review img {
+  .post img {
     width: 100%;
     height: 100%;
   }

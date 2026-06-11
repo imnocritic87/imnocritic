@@ -1,5 +1,6 @@
 ---
 import "@fontsource-variable/inter/wght.css";
+import '@fontsource/micro-5';
 ---
 <html lang="en">
   <head>
@@ -7,24 +8,26 @@ import "@fontsource-variable/inter/wght.css";
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="sheet">
-      <header>
-        <div class="title">I'm no critic</div>
-        <div class="tagline">
-          (Videogiochi, fumetti e altro, raccontati con parole semplici)
+    <header>
+      <div class="content">
+        <div class="title">
+          I'm <mark>no</mark> critic
         </div>
-      </header>
-      <nav>
-        <a href="/reviews">Recensioni</a>
-        <a href="/news">Notizie</a>
-        <a href="/about">Filosofia</a>
-      </nav>
-      <slot />
+        <nav>
+          <a href="/">Home page</a>
+          <a href="/about">Filosofia di questo sito</a>
+        </nav>
+      </div>
+    </header>
+    <div class="sheet">
+      <div class="content">
+        <slot />
+      </div>
     </div>
   </body>
   <style>
     html {
-      font-size: 18px;
+      font-size: 16px;
     }
 
     body {
@@ -41,13 +44,12 @@ import "@fontsource-variable/inter/wght.css";
 
     :global(a) {
       text-decoration: none;
-      color: rgb(32, 32, 32);
     }
 
     .sheet {
       width: 100%;
-      max-width: 80ch;
-      min-height: 100vh;
+      max-width: 60rem;
+      min-height: calc(100vh - 2.2rem);
       background: white;
       box-shadow:
         0 1px 3px rgba(0, 0, 0, 0.08),
@@ -55,37 +57,97 @@ import "@fontsource-variable/inter/wght.css";
     }
 
     header {
+      width: 100%;
+      background: rgb(250, 250, 250);
+      box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        0 8px 24px rgba(0, 0, 0, 0.06);
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      margin: 1rem;
-      padding: 1rem;
-      background: rgb(250, 250, 250);
+    }
+
+    @media (min-width: 60rem) {
+      header {
+        position: fixed;
+        height: 2.2rem;
+      }
+
+      header .content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header .title {
+        margin-left: 1rem;
+      }
+
+      nav {
+        flex-direction: row;
+        margin-right: 1rem;
+      }
+
+      nav a {
+        margin-left: 1.5rem;
+      }
+
+      .sheet {
+        margin-top: 2.2rem;
+      }
+    }
+
+    @media (max-width: 60rem) {
+      header {
+        position: relative;
+      }
+
+      header .content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    header .content {
+      width: 100%;
+      max-width: 60rem;
+      display: flex;
     }
 
     header .title {
-      font-size: 1.5rem;
-      font-weight: 900;
-      text-transform: uppercase;
+      font-family: 'Micro 5', system-ui;
+      font-size: 2rem;
     }
 
-    header .tagline {
-      font-size: 0.7rem;
+    header .title mark {
+      background: none;
+      color: rgb(0, 100, 255);
     }
 
     nav {
       display: flex;
-      flex-direction: row;
-      justify-content: space-around;
       text-transform: uppercase;
-      margin: 1rem;
-      padding: 0.25rem;
-      background: rgb(250, 250, 250);
     }
 
     nav a {
       font-size: 0.8rem;
-      font-weight: 900;
+      font-weight: 800;
+      color: rgb(80, 80, 80);
+    }
+
+    .sheet .content {
+      max-width: 100%;
+      padding: 1rem;
     }
   </style>
 </html>
