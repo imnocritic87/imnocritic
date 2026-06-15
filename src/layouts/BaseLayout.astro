@@ -1,6 +1,8 @@
 ---
 import "@fontsource-variable/inter/wght.css";
 import '@fontsource/micro-5';
+import { Image } from 'astro:assets';
+import logo from '../layout-images/logo.png';
 ---
 <html lang="en">
   <head>
@@ -10,9 +12,10 @@ import '@fontsource/micro-5';
   <body>
     <header>
       <div class="content">
-        <div class="title">
-          I'm <mark>no</mark> critic
-        </div>
+        <a class="title" href="/">
+          <Image src={logo} alt="Site logo" />
+          <span>I'm <mark>no</mark> critic</span>
+        </a>
         <nav>
           <a href="/">Home page</a>
           <a href="/about">Filosofia di questo sito</a>
@@ -44,12 +47,12 @@ import '@fontsource/micro-5';
 
     :global(a) {
       text-decoration: none;
+      color: inherit;
     }
 
     .sheet {
       width: 100%;
       max-width: 60rem;
-      min-height: calc(100vh - 2.2rem);
       background: white;
       box-shadow:
         0 1px 3px rgba(0, 0, 0, 0.08),
@@ -58,7 +61,7 @@ import '@fontsource/micro-5';
 
     header {
       width: 100%;
-      background: rgb(250, 250, 250);
+      background: rgba(250, 250, 250, 0.9);
       box-shadow:
         0 1px 3px rgba(0, 0, 0, 0.08),
         0 8px 24px rgba(0, 0, 0, 0.06);
@@ -68,10 +71,23 @@ import '@fontsource/micro-5';
       align-items: center;
     }
 
+    header .title {
+      display: flex;
+      flex-direction: row;
+    }
+
+    header .title img {
+      width: 2.7rem;
+      height: auto;
+      opacity: 0.7;
+      margin-right: 1rem;
+    }
+
     @media (min-width: 60rem) {
       header {
         position: fixed;
-        height: 2.2rem;
+        height: 3rem;
+        z-index: 1;
       }
 
       header .content {
@@ -94,7 +110,8 @@ import '@fontsource/micro-5';
       }
 
       .sheet {
-        margin-top: 2.2rem;
+        margin-top: 3rem;
+        min-height: calc(100vh - 3rem);
       }
     }
 
@@ -108,6 +125,11 @@ import '@fontsource/micro-5';
         align-items: center;
       }
 
+      header .title {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+      }
+
       nav {
         flex-direction: column;
         align-items: center;
@@ -116,11 +138,14 @@ import '@fontsource/micro-5';
       nav a {
         margin-bottom: 0.5rem;
       }
+
+      .sheet {
+        min-height: 100vh;
+      }
     }
 
     header .content {
       width: 100%;
-      max-width: 60rem;
       display: flex;
     }
 

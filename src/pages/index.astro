@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
+import { formatDateIt, formatMediumIt, formatTypeIt } from '../utils';
 
 const posts = await getCollection('posts');
 ---
@@ -10,12 +11,17 @@ const posts = await getCollection('posts');
     {
       posts.map((post: any) => (
         <a class="post" href={`/posts/${post.id}`}>
-          <Image src={post.data.hero} alt="A description of my image." />
-          <div class="score">80</div>
+          <div class="image-container">
+            <Image src={post.data.hero} alt={post.data.title} />
+            <div class="score">{post.data.score}</div>
+          </div>
           <div class="info">
-            <div class="type">Recensione</div>
+            <div class="info-header">
+              <span class="type">{formatTypeIt(post.data.type)}</span> |
+              <span class="medium">{formatMediumIt(post.data.medium)}</span> |
+              <span class="date">{formatDateIt(post.data.pubDate)}</span>
+            </div>
             <div class="title">{post.data.title}</div>
-            <div class="date">14 Marzo 2026</div>
           </div>
         </a>
       ))
@@ -23,58 +29,95 @@ const posts = await getCollection('posts');
   </div>
 </BaseLayout>
 <style>
-  .posts {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+  @media (max-width: 60rem) {
+    .posts {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .post {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .post .image-container {
+      width: 30%;
+    }
+
+    .post img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .post .info {
+      padding: 2rem;
+    }
+
+    .post .info-header {
+      font-size: 1rem;
+    }
+
+    .post .title {
+      font-size: 2rem;
+    }
   }
 
-  .post {
-    position: relative;
+  @media (min-width: 60rem) {
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 1rem;
+      row-gap: 4rem;
+    }
+
+    .post img {
+      width: 100%;
+      height: auto;
+    }
+
+    .post .info-header {
+      font-size: 0.7rem;
+    }
+
+    .post .title {
+      font-size: 1.5rem;
+    }
   }
 
-  .post .info {
-    position: absolute;
-    bottom: 0;
-    top: auto;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-  }
-
-  .post .info .type {
-    display: inline-block;
+  .post .info-header {
     text-transform: uppercase;
-    margin-top: 1rem;
-    margin-left: 1rem;
-    font-size: 0.6rem;
-    padding: 0.1rem;
-    background: white;
-    color: black;
-    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: rgb(200, 200, 200);
   }
 
-  .post .info .title {
-    font-weight: 900;
-    margin-bottom: 0.5rem;
-    margin-left: 1rem;
-    font-size: 1.2rem;
+  .post .type {
+    color: rgb(100, 100, 100);
   }
 
-  .post .info .date {
-    margin-bottom: 1rem;
-    margin-left: 1rem;
-    font-size: 0.6rem;
-    font-weight: 500;
+  .post .medium {
+    color: rgb(25, 125, 255);
+  }
+
+  .post .date {
+    color: rgb(150, 150, 150);
+  }
+
+  .post .title {
+    font-weight: 800;
+  }
+
+  .post .image-container {
+    position: relative;
   }
 
   .post .score {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    border-radius: 2rem;
-    width: 2rem;
-    height: 2rem;
+    border-radius: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
     font-weight: 900;
     font-size: 0.7rem;
     background: rgba(0, 0, 0, 0.7);
@@ -82,10 +125,5 @@ const posts = await getCollection('posts');
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .post img {
-    width: 100%;
-    height: 100%;
   }
 </style>

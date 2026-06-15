@@ -3,6 +3,7 @@ name: Deploy to Cloudflare Pages (pnpm)
 on:
   push:
     branches:
+      - develop
       - master
 
 jobs:
@@ -41,3 +42,4 @@ jobs:
           projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref_name }}
