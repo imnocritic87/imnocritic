@@ -62,6 +62,7 @@ const { Content } = await render(post);
     }
 
     .score {
+      margin-top: 5rem;
       background: rgb(0, 100, 255);
       color: white;
       height: 12rem;
@@ -73,16 +74,29 @@ const { Content } = await render(post);
     }
 
     .markdown {
-      font-size: 1.4rem;
-      line-height: 1.4;
+      font-size: 1.2rem;
+      line-height: 1.6;
       text-align: justify;
       font-weight: 200;
+      word-spacing: 0.05rem;
     }
 
+    :global(.markdown p) {
+      margin-bottom: 2rem;;
+    }
+
+    @media (max-width: 60rem) {
+      .markdown {
+        font-size: 3.5vw;
+        padding-left: 4vw;
+        padding-right: 4vw;
+      }
+    }
+    
     @media (min-width: 60rem) {
       .markdown {
-        padding-left: 6rem;
-        padding-right: 6rem;
+        padding-left: 9rem;
+        padding-right: 9rem;
       }
     }
   </style>
