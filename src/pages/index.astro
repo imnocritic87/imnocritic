@@ -39,10 +39,11 @@ const posts = await getCollection('posts');
       margin-bottom: 1rem;
       display: flex;
       flex-direction: row;
+      align-items: center;
     }
 
     .post .image-container {
-      width: 30%;
+      width: 40%;
     }
 
     .post img {
@@ -51,15 +52,19 @@ const posts = await getCollection('posts');
     }
 
     .post .info {
-      padding: 2rem;
+      padding: 1rem;
     }
 
     .post .info-header {
-      font-size: 1rem;
+      font-size: 0.6rem;
     }
 
     .post .title {
-      font-size: 2rem;
+      font-size: 1.5rem;
+    }
+
+    .post .score {
+      display: none;
     }
   }
 
@@ -82,6 +87,10 @@ const posts = await getCollection('posts');
 
     .post .title {
       font-size: 1.5rem;
+    }
+
+    .post .score {
+      display: flex;
     }
   }
 
@@ -122,7 +131,6 @@ const posts = await getCollection('posts');
     font-size: 0.7rem;
     background: rgba(0, 0, 0, 0.7);
     color: white;
-    display: flex;
     justify-content: center;
     align-items: center;
   }

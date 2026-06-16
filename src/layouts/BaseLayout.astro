@@ -74,11 +74,13 @@ import logo from '../layout-images/logo.png';
     header .title {
       display: flex;
       flex-direction: row;
+      display: flex;
+      align-items: center;
     }
 
     header .title img {
       width: 2.7rem;
-      height: auto;
+      height: 2rem;
       opacity: 0.7;
       margin-right: 1rem;
     }
@@ -98,15 +100,18 @@ import logo from '../layout-images/logo.png';
 
       header .title {
         margin-left: 1rem;
+        font-size: 2rem;
       }
 
       nav {
         flex-direction: row;
         margin-right: 1rem;
+        display: flex;
       }
 
       nav a {
         margin-left: 1.5rem;
+        font-size: 0.8rem;
       }
 
       .sheet {
@@ -126,17 +131,18 @@ import logo from '../layout-images/logo.png';
       }
 
       header .title {
-        margin-top: 1rem;
-        margin-bottom: 2rem;
+        font-size: 3rem;
       }
 
       nav {
+        display: none;
         flex-direction: column;
         align-items: center;
       }
 
       nav a {
         margin-bottom: 0.5rem;
+        font-size: 1rem;
       }
 
       .sheet {
@@ -151,7 +157,6 @@ import logo from '../layout-images/logo.png';
 
     header .title {
       font-family: 'Micro 5', system-ui;
-      font-size: 2rem;
     }
 
     header .title mark {
@@ -160,12 +165,10 @@ import logo from '../layout-images/logo.png';
     }
 
     nav {
-      display: flex;
       text-transform: uppercase;
     }
 
     nav a {
-      font-size: 0.8rem;
       font-weight: 800;
       color: rgb(80, 80, 80);
     }
