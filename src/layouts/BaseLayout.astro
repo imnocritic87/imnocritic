@@ -11,6 +11,9 @@ import logo from '../layout-images/logo.png';
   </head>
   <body>
     <header>
+       <button class="hamburger">
+        ☰
+      </button>
       <div class="content">
         <a class="title" href="/">
           <Image src={logo} alt="Site logo" />
@@ -28,6 +31,14 @@ import logo from '../layout-images/logo.png';
       </div>
     </div>
   </body>
+  <script>
+    const hamburger = document.querySelector('.hamburger')!;
+    const nav = document.querySelector('nav')!;
+
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+  </script>
   <style>
     html {
       font-size: 16px;
@@ -86,6 +97,10 @@ import logo from '../layout-images/logo.png';
     }
 
     @media (min-width: 60rem) {
+      .hamburger {
+        display: none;
+      }
+
       header {
         position: fixed;
         height: 3rem;
@@ -121,6 +136,23 @@ import logo from '../layout-images/logo.png';
     }
 
     @media (max-width: 60rem) {
+      .hamburger {
+        border: none;
+        background: none;
+        font-size: 2rem;
+        position: absolute;
+        left: 1rem;
+        top: 0.4rem;
+        border: 1px solid rgb(220, 220, 220);
+        border-radius: 0.4rem;
+        color: rgb(100, 100, 100);
+        cursor: pointer;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
       header {
         position: relative;
       }
@@ -135,6 +167,8 @@ import logo from '../layout-images/logo.png';
       }
 
       nav {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
         display: none;
         flex-direction: column;
         align-items: center;
